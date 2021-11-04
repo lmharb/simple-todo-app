@@ -1,3 +1,7 @@
+# A SIMPLE TODO APP 
+
+Just a simple todo app using react hooks
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
