@@ -1,13 +1,14 @@
-import React from "react"
+import React, { useContext } from "react"
 import useImputState from "./hooks/useInputState"
 import { TextField } from "@mui/material"
 import { IconButton } from "@mui/material"
 import { ListItemSecondaryAction } from "@mui/material"
 import EditOffIcon from "@mui/icons-material/EditOff"
-import EditOff from "@mui/icons-material/EditOff"
+import { TodosContext } from "./context/todos.context"
 
-const EditTodoForm = ({ task, updateTodo, id, toggleIsEditing }) => {
-  const [value, handleChange, resetValue] = useImputState(task)
+const EditTodoForm = ({ id, task, toggleIsEditing }) => {
+  const { updateTodo } = useContext(TodosContext)
+  const [value, handleChange] = useImputState(task)
 
   return (
     <form

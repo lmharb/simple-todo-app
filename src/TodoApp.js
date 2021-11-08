@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useContext } from "react"
 import TodoList from "./TodoList"
 import TodoForm from "./TodoForm"
 import { Typography } from "@mui/material"
@@ -6,17 +6,9 @@ import { Paper } from "@mui/material"
 import { AppBar } from "@mui/material"
 import { Toolbar } from "@mui/material"
 import { Grid } from "@mui/material"
-import useTodoState from "./hooks/useTodoState"
+import { TodosProvider } from "./context/todos.context"
 
 const TodoApp = () => {
-  const initialTodos = JSON.parse(window.localStorage.getItem("todos") || "[]")
-  const { todos, addTodo, deleteTodo, updateTodo, toggleTodo } =
-    useTodoState(initialTodos)
-
-  useEffect(() => {
-    window.localStorage.setItem("todos", JSON.stringify(todos))
-  }, [todos])
-
   return (
     <Paper
       style={{
@@ -34,35 +26,10 @@ const TodoApp = () => {
       </AppBar>
       <Grid container justifyContent='center' style={{ marginTio: "1rem" }}>
         <Grid item xs={11} md={8} lg={4}>
-          <TodoForm addTodo={addTodo} />
-          {todos.length === 0 ? (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "30vh",
-              }}
-            >
-              <span
-                style={{
-                  color: "darkgray",
-                  fontSize: "1.5rem",
-                  fontWeight: "bold",
-                  justifyContent: "center",
-                }}
-              >
-                You currently have no TODOS
-              </span>
-            </div>
-          ) : (
-            <TodoList
-              todos={todos}
-              deleteTodo={deleteTodo}
-              toggleTodo={toggleTodo}
-              updateTodo={updateTodo}
-            />
-          )}
+          <TodosProvider>
+            <TodoForm />
+            <TodoList />
+          </TodosProvider>
         </Grid>
       </Grid>
     </Paper>
