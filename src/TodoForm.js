@@ -1,19 +1,19 @@
-import React from "react"
+import React, { useContext } from "react"
 import useInputState from "./hooks/useInputState"
 import { Paper } from "@mui/material"
 import { TextField } from "@mui/material"
+import { DispatchContext } from "./context/todos.context"
 
-const TodoForm = (props) => {
+const TodoForm = () => {
   const [value, handleChange, resetValue] = useInputState("")
-
-  const { addTodo } = props
+  const dispatch = useContext(DispatchContext)
 
   return (
     <Paper style={{ margin: "1rem 0", padding: "0 1rem" }}>
       <form
         onSubmit={(e) => {
           e.preventDefault()
-          addTodo(value)
+          dispatch({ type: "ADD", task: value })
           resetValue()
         }}
       >
