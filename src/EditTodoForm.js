@@ -7,14 +7,14 @@ import EditOffIcon from "@mui/icons-material/EditOff"
 import { TodosContext } from "./context/todos.context"
 
 const EditTodoForm = ({ id, task, toggleIsEditing }) => {
-  const { updateTodo } = useContext(TodosContext)
+  const { dispatch } = useContext(TodosContext)
   const [value, handleChange] = useImputState(task)
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault()
-        updateTodo(id, value)
+        dispatch({ type: "UPDATE", id: id, updatedTask: value })
         toggleIsEditing()
       }}
       style={{
