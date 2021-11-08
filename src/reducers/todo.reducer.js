@@ -7,8 +7,9 @@ const todoReducer = (state, action) => {
     case "DELETE":
       return state.filter((todo) => todo.id !== action.id)
     case "TOGGLE":
+      console.log(state)
       return state.map((todo) =>
-        todo.id === action.id ? { ...state, completed: !todo.completed } : todo
+        todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
       )
     case "UPDATE":
       return state.map((todo) =>

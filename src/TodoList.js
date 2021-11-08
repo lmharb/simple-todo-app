@@ -35,7 +35,12 @@ const TodoList = () => {
         ) : (
           todos.map((todo, i) => (
             <Fragment key={todo.id}>
-              <Todo id={todo.id} task={todo.task} completed={todo.completed} />
+              <Todo
+                key={todo.id}
+                id={todo.id}
+                task={todo.task}
+                completed={todo.completed}
+              />
               {i < todos.length - 1 && <Divider />}
             </Fragment>
           ))

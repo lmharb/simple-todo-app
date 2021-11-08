@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React from "react"
 import TodoList from "./TodoList"
 import TodoForm from "./TodoForm"
 import { Typography } from "@mui/material"
@@ -24,7 +24,7 @@ const TodoApp = () => {
           <Typography color='inherit'>TODOS WITH HOOKS</Typography>
         </Toolbar>
       </AppBar>
-      <Grid container justifyContent='center' style={{ marginTio: "1rem" }}>
+      <Grid container justifyContent='center' style={{ marginTop: "1rem" }}>
         <Grid item xs={11} md={8} lg={4}>
           <TodosProvider>
             <TodoForm />
