@@ -4,10 +4,10 @@ import { TextField } from "@mui/material"
 import { IconButton } from "@mui/material"
 import { ListItemSecondaryAction } from "@mui/material"
 import EditOffIcon from "@mui/icons-material/EditOff"
-import { TodosContext } from "./context/todos.context"
+import { DispatchContext } from "./context/todos.context"
 
 const EditTodoForm = ({ id, task, toggleIsEditing }) => {
-  const { dispatch } = useContext(TodosContext)
+  const dispatch = useContext(DispatchContext)
   const [value, handleChange] = useImputState(task)
 
   return (

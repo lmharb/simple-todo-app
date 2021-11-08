@@ -7,7 +7,7 @@ import { TodosContext } from "./context/todos.context"
 import { Divider } from "@mui/material"
 
 const TodoList = () => {
-  const { todos } = useContext(TodosContext)
+  const todos = useContext(TodosContext)
 
   return (
     <Paper>
